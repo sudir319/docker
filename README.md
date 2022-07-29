@@ -10,3 +10,16 @@ currency-exchange-service has the logic to connect to mysql server and fetch the
 currency-conversion-service has the logic to connect to currency-exchange-service and fetch the rate and calucate the exchange value for the given amount.
 
 When testing these spring applications inside IDE, the application.properties must be changed to point to localhost instead of docker-mysql and currency-exchange-service, considering the docker-mysql container is running inside the docker
+
+# building images
+
+cd <path to>/mysql-docker-image
+docker build -f Dockerfile -t docker_mysql .
+
+cd ../currency-exchange-service 
+mvn clean install package -DskipTests=true
+docker build -f Dockerfile -t currency_exchange_service .
+
+cd ../currency-conversion-service
+mvn clean install package -DskipTests=true
+docker build -f Dockerfile -t currency_conversion_service .
