@@ -24,3 +24,8 @@ cd ../currency-conversion-service <br/>
 mvn clean install package -DskipTests=true<br/>
 docker build -f Dockerfile -t currency_conversion_service .<br/>
 <br/>
+
+# run images without compose(testing)
+docker run -d -p 3306:3306 --name=docker-mysql sudir319/docker_mysql<br/>
+docker run -td --name=currency-exchange-service --link docker-mysql:mysql -p 8080:8080 sudir319/currency_exchange_service<br/>
+docker run -td --name=currency-conversion-service --link docker-mysql:mysql --link currency-exchange-service:currency_exchange_service -p 8081:8081 sudir319/currency_conversion_service<br/>
