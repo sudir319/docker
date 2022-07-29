@@ -14,14 +14,14 @@ When testing these spring applications inside IDE, the application.properties mu
 # building images
 
 cd <path to>/mysql-docker-image
-docker build -f Dockerfile -t docker_mysql .
+  docker build -f Dockerfile -t docker_mysql .
 
 
 cd ../currency-exchange-service 
-mvn clean install package -DskipTests=true 
-docker build -f Dockerfile -t currency_exchange_service .
+  mvn clean install package -DskipTests=true 
+  docker build -f Dockerfile -t currency_exchange_service .
 
 
 cd ../currency-conversion-service 
-mvn clean install package -DskipTests=true 
-docker build -f Dockerfile -t currency_conversion_service .
+  mvn clean install package -DskipTests=true 
+  docker build -f Dockerfile -t currency_conversion_service .
