@@ -1,0 +1,30 @@
+version: '3'
+networks: 
+  exchange-network:
+    driver: bridge
+services:
+  docker-mysql:
+    container_name: docker-mysql
+    image: sudir319/docker_mysql
+    ports:
+      - 3306:3306
+    networks:
+      - exchange-network
+  currency_exchange_service:
+    container_name: currency-exchange-service
+    image: sudir319/currency_exchange_service
+    ports:
+      - 8080:8080
+    networks:
+      - exchange-network
+    depends_on:
+      - docker-mysql
+  currency_conversion_service:
+    container_name: currency-conversion-service
+    image: sudir319/currency_conversion_service
+    ports:
+      - 8081:8081
+    networks:
+      - exchange-network
+    depends_on:
+      - currency_exchange_service
