@@ -17,9 +17,9 @@ cd <path to>/mysql-docker-image
 docker build -f Dockerfile -t docker_mysql .
 
 cd ../currency-exchange-service 
-mvn clean install package -DskipTests=true
+mvn clean install package -DskipTests=true 
 docker build -f Dockerfile -t currency_exchange_service .
 
-cd ../currency-conversion-service
-mvn clean install package -DskipTests=true
+cd ../currency-conversion-service 
+mvn clean install package -DskipTests=true 
 docker build -f Dockerfile -t currency_conversion_service .
