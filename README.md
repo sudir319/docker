@@ -23,7 +23,6 @@ docker build -f Dockerfile -t currency_exchange_service .<br/>
 cd ../currency-conversion-service <br/>
 mvn clean install package -DskipTests=true<br/>
 docker build -f Dockerfile -t currency_conversion_service .<br/>
-<br/>
 
 # run images without compose(testing)
 docker run -d -p 3306:3306 --name=docker-mysql sudir319/docker_mysql<br/>
